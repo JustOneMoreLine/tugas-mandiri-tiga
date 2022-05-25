@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/bshuster-repo/logrus-logstash-hook"
 	"github.com/gorilla/mux"
@@ -59,7 +60,7 @@ func main() {
 	InitializeLogger()
 	CreateRouter()
 	InitializeRoute()
-	http.ListenAndServe(":8000", router)
+	http.ListenAndServe(":" + os.Getenv("PORT"), router)
 }
 
 
